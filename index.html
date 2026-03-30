@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cubo 3D — Three.js</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+      body {
+        background: #050810;
+        overflow: hidden;
+        font-family: "Space Mono", "Courier New", monospace;
+        color: #c8d6f0;
+      }
+
+      #canvas-container {
+        position: fixed;
+        inset: 0;
+      }
+
+      canvas {
+        display: block;
+      }
+
+      /* HUD overlay */
+      #hud {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      #title-block {
+        position: absolute;
+        top: 32px;
+        left: 40px;
+      }
+
+      #title-block h1 {
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #4a7fc1;
+        margin-bottom: 4px;
+      }
+
+      #title-block p {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: #3a5070;
+      }
+
+      #controls-panel {
+        position: absolute;
+        bottom: 36px;
+        left: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .ctrl-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 9px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #2a4060;
+      }
+
+      .ctrl-row .key {
+        display: inline-block;
+        border: 1px solid #1e3050;
+        padding: 2px 7px;
+        font-size: 8px;
+        letter-spacing: 0.05em;
+        color: #3a6090;
+        border-radius: 2px;
+      }
+
+      /* Corner accents */
+      .corner {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+      }
+      .corner::before,
+      .corner::after {
+        content: "";
+        position: absolute;
+        background: #1e3a5a;
+      }
+      .corner::before {
+        width: 100%;
+        height: 1px;
+        top: 0;
+        left: 0;
+      }
+      .corner::after {
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .corner.tl {
+        top: 24px;
+        left: 24px;
+      }
+      .corner.tr {
+        top: 24px;
+        right: 24px;
+        transform: scaleX(-1);
+      }
+      .corner.bl {
+        bottom: 24px;
+        left: 24px;
+        transform: scaleY(-1);
+      }
+      .corner.br {
+        bottom: 24px;
+        right: 24px;
+        transform: scale(-1);
+      }
+
+      #stats {
+        position: absolute;
+        top: 32px;
+        right: 40px;
+        text-align: right;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        color: #1e3050;
+      }
+
+      #stats span {
+        display: block;
+        margin-bottom: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+
+    <div id="hud">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+
+      <div id="title-block">
+        <h1>Cubo 3D &mdash; Three.js</h1>
+        <p>Computação Gráfica &bull; 8° Período</p>
+      </div>
+
+      <div id="stats">
+        <span id="stat-fov">FOV: 60°</span>
+        <span id="stat-near">Near: 0.1</span>
+        <span id="stat-far">Far: 1000</span>
+      </div>
+
+      <div id="controls-panel">
+        <div class="ctrl-row">
+          <span class="key">LMB drag</span>
+          <span>Rotacionar câmera</span>
+        </div>
+        <div class="ctrl-row">
+          <span class="key">RMB drag</span>
+          <span>Transladar câmera</span>
+        </div>
+        <div class="ctrl-row">
+          <span class="key">Scroll</span>
+          <span>Zoom</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Three.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- OrbitControls (r128 build) -->
+    <script>
+      // Inline OrbitControls compatible with Three.js r128
+      // Source: three.js examples/jsm/controls/OrbitControls.js (minified-compatible inline)
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
