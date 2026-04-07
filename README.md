@@ -33,7 +33,7 @@ cd Threejs-Cubo3D
 | ----------------------------- | ----------------------------------- |
 | **Botão esquerdo** (arrastar) | Rotaciona a câmera em torno do cubo |
 | **Botão direito** (arrastar)  | Translada a câmera (pan)            |
-| **Scroll**                    | Zoom — aproxima ou afasta a câmera  |
+| **Scroll**                    | Zoom, aproxima ou afasta a câmera   |
 
 ---
 
@@ -66,7 +66,7 @@ const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
 ### Projeção Perspectiva
 
-Na projeção perspectiva, raios partem de um único ponto (a câmera) e os objetos são projetados em um plano 2D. Isso cria a **convergência de linhas paralelas** e o **escalonamento pela distância** característicos da visão realista — ao contrário da projeção ortográfica, que não tem essa distorção de profundidade.
+Na projeção perspectiva, raios partem de um único ponto (a câmera) e os objetos são projetados em um plano 2D. Isso cria a **convergência de linhas paralelas** e o **escalonamento pela distância** característicos da visão realista, ao contrário da projeção ortográfica, que não tem essa distorção de profundidade.
 
 ### OrbitControls
 
